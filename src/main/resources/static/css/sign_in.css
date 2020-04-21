@@ -1,0 +1,54 @@
+body {
+    background: url("../images/bg2.jpg");
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+.sign_in {
+    position: relative;
+    max-width: 400px;
+    padding: 60px 50px;
+    margin: 150px auto 0;
+    background-size: cover;
+}
+
+.sign_in:before {
+     content: '';
+     position: absolute;
+     top: 0;
+     left: 0;
+     right: 0;
+     bottom: 0;
+     border-radius: 25px;
+     background: linear-gradient(to top, #ccb0, #afecdd);
+}
+
+nobr {
+   position: relative;
+   font-size: 25px;
+   color: white;
+   text-shadow: 2px 2px 2px black;
+}
+
+input {
+    position: relative;
+    font-size: 20px;
+}
+
+button {
+    position: relative;
+    font-size: 22px;
+    border-color: #429c0a;
+    border-style: solid;
+    border-width: 2px;
+    color: #429c0a;
+    background: white;
+    border-radius: 5px;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+button:hover {
+    background-color: #429c0a;
+    color: white;
+}
+

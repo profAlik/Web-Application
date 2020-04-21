@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Отправка данных</title>
+    <script src="js/script.js"></script>
+    <link rel="stylesheet" href="css/sendingData.css"/>
+</head>
+<body>
+    <div class="register">
+        <h1>Регистрация</h1>
+        <form class="register_form">
+            <input type="text" id="input_name" placeholder="Имя пользователя"><nobr class="star">*</nobr><nobr class="info"> (уникальное)</nobr><br>
+            <input type="text" id="input_numberPhone" placeholder="Номер телефона"><nobr class="star">*</nobr><br>
+            <input type="date" id="input_birthday" placeholder="Дата рождения"><nobr class="star">*</nobr><br>
+            <input type="text" id="input_vk" placeholder="Ссылка на Вконтакте"><nobr class="star">*</nobr><br>
+            <input type="text" id="input_about" placeholder="Информация о себе"><nobr class="star">*</nobr><br>
+            <input type="text" id="input_hobby" placeholder="Хобби"><nobr class="star">*</nobr><br><br>
+            <label id="gender">Пол: </label>
+            <select id="input_user_gender">
+                <option value="Женский">Женский</option>
+                <option value="Мужской">Мужской</option>
+            </select><br><br>
+            <label class="checkbox_label"><input value="Женат / замужем" class="checkbox" id="checkbox_marriage" type="checkbox" style="margin-right: 12px;"><nobr class="checkbox_text">Женат / замужем</nobr></label><br><br>
+            <label class="checkbox_label"><input value="Есть дети" class="checkbox" id="checkbox_have_children" type="checkbox" style="margin-right: 12px;"><nobr class="checkbox_text">Есть дети</nobr></label><br><br>
+            <input type="password" id="input_user_password" placeholder="Пароль"><nobr class="star">*</nobr>
+            <p class="info">Обязательные поля отмечены звёздочкой*</p>
+            <button type="button" onClick="createUser()">Зарегистрироваться</button>
+        </form>
+        <br><nobr><i>Уже зарегистрированы?</i>  </nobr><button type="button" onclick="window.location='sign_in.html'">Войти</button>
+    </div>
+</body>
+</html>

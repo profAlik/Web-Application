@@ -1,0 +1,85 @@
+body {
+    background: url("../images/bg2.jpg");
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+.register {
+    position: relative;
+    max-width: 400px;
+    padding: 60px 50px;
+    margin: 50px auto 0;
+    background-size: cover;
+}
+
+.register:before {
+     content: '';
+     position: absolute;
+     top: 0;
+     left: 0;
+     right: 0;
+     bottom: 0;
+     border-radius: 25px;
+     background: linear-gradient(to top, #ccb0, #afecdd);
+ }
+
+p, nobr, #gender {
+    font-size: 25px;
+    position: relative;
+    color: white;
+    text-shadow: 2px 2px 2px black;
+}
+
+h1 {
+    position: relative;
+    font-size: 35px;
+    text-transform: uppercase;
+    color: white;
+    text-shadow: 1px 1px 3px black;
+}
+
+input {
+    position: relative;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-size: 22px;
+    outline: none;
+}
+
+.checkbox {
+    transform:scale(1.5);
+}
+
+select {
+    position: relative;
+    font-size: 17px;
+}
+
+button {
+    position: relative;
+    margin-top: 5px;
+    font-size: 22px;
+    border-color: #429c0a;
+    border-style: solid;
+    border-width: 2px;
+    color: #429c0a;
+    background: white;
+    border-radius: 5px;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+button:hover {
+    background-color: #429c0a;
+    color: white;
+}
+
+.info {
+    font-size: 18px;
+    color: #ffdb70;
+}
+
+.star {
+   color: #ffdb70;
+}
+
+

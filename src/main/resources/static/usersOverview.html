@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Страница пользователя</title>
+    <link rel="stylesheet" href="css/usersOverview.css"/>
+    <script src="js/user.js"></script>
+</head>
+<body>
+<div class="page-container">
+    <div class="user_data">
+        <div class="head">
+            <a href="" id="user_vk"><img id="vk" src="images/vk.png"></a>
+            <nobr id="user_name"></nobr>
+        </div>
+        <div class="middle">
+            <p> ID пользователя:
+                <nobr id="user_id"></nobr>
+            <p> Номер телефона:
+                <nobr id="user_numberPhone"></nobr>
+            <p> Дата рождения:
+                <nobr id="user_birthday"></nobr>
+            <p id="user_marriage"></p>
+            <p id="user_have_children"></p>
+            <p> Пол:
+                <nobr id="user_gender"></nobr>
+            <p> Хобби:
+                <nobr id="user_hobby"></nobr>
+        </div>
+        <div class="middle_about">
+            <h1>Информация о пользователе</h1>
+            <textarea id="user_about"></textarea>
+            <button type="button" onclick="updateUserInfo()">Сохранить</button>
+        </div>
+        <div class="bottom">
+            <br><button type="button" onclick="window.location='sign_in.html'">Выйти</button>
+        </div>
+    </div>
+</div>
+</body>
+</html>
