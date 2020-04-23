@@ -2,6 +2,7 @@ body {
     background: url("../images/bg2.jpg");
     background-attachment: fixed;
     background-size: cover;
+    font-family: Comic sans MS;
 }
 
 div.page-container {
@@ -15,13 +16,13 @@ div.page-container {
     position: relative;
     max-width: 400px;
     padding: 60px 50px;
-    margin: 80px 200px;
+    margin: 20px 200px;
 }
 
 .user_data:before {
      content: '';
      position: absolute;
-     width: 920px;
+     width: 950px;
      top: 0;
      left: 0;
      right: 0;
@@ -42,7 +43,7 @@ div.page-container {
 
 .middle_about {
     position: relative;
-    width: 850px;
+    width: 900px;
     height: 300px;
 }
 

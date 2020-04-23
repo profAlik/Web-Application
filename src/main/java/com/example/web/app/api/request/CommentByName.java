@@ -1,6 +1,6 @@
 package com.example.web.app.api.request;
 
-public class UserByNameRequest {
+public class CommentByName {
     private String name;
 
     public String getName() {

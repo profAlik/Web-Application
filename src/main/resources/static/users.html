@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Страница пользователя</title>
+    <link rel="stylesheet" href="css/users.css"/>
+    <script src="js/users.js"></script>
+</head>
+<body>
+<div class="page-container">
+    <div class="user_data">
+        <div class="head">
+            <a href="" id="user_vk"><img id="vk" src="images/vk.png"></a>
+            <nobr id="user_name"></nobr>
+        </div>
+        <div class="middle">
+            <p> ID пользователя:
+                <nobr id="user_id">---</nobr>
+            <p> Номер телефона:
+            <p id="user_numberPhone">#-###-###-##-##</p>
+            <p> Дата рождения:
+                <nobr id="user_birthday">##.##.####</nobr>
+            <p id="user_marriage">---</p>
+            <p id="user_have_children">---</p>
+            <p> Пол:
+                <nobr id="user_gender">---</nobr>
+            <p> Хобби:
+                <nobr id="user_hobby">---</nobr>
+        </div>
+        <div class="middle_about">
+            <h1>Информация о пользователе</h1>
+            <textarea id="user_about" disabled></textarea>
+        </div>
+        <div class="bottom">
+            <button id="previous" type="button" onclick="getUser(2)">Предыдущий</button>
+            <label id="input_user_id" hidden>0</label>
+            <button id="next" type="button" onclick="getUser(1)">Следующий</button>
+            <div class="comments">
+                <p>Лента</p>
+                <textarea id="comments_field" readonly></textarea><br>
+                <textarea id="comment_input"></textarea>
+                <button type="button" onclick="leaveComment()">Написать</button>
+            </div>
+            <br><br><button type="button" onclick="window.location='myPage.html'">Моя страница</button>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,7 +1,6 @@
 package com.example.web.app.api.request;
 
 public class UserByPasswordRequest {
-
     private String name;
     private String password;
 

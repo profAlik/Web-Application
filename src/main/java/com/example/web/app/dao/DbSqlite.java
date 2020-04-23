@@ -13,7 +13,6 @@ import java.util.logging.Logger;
 @Service
 public class DbSqlite implements InitializingBean {
     private Logger log = Logger.getLogger(getClass().getName());
-
     private String dbPath = "db.db";
 
     @Override
@@ -50,7 +49,32 @@ public class DbSqlite implements InitializingBean {
             user.setId(resultSet.getInt("id"));
             user.setBirthday(resultSet.getDate("birthday"));
             user.setName(resultSet.getString("name"));
-            user.setNumberPhone(resultSet.getString("phone_number"));
+            user.setNumberPhone(resultSet.getString("number_phone"));
+            user.setAbout(resultSet.getString("about"));
+            user.setHobby(resultSet.getString("hobby"));
+            user.setVk(resultSet.getString("vk"));
+            user.setMarriage(resultSet.getString("marriage"));
+            user.setHaveChildren(resultSet.getString("have_children"));
+            user.setGender(resultSet.getString("gender"));
+            user.setPassword(resultSet.getString("password"));
+            user.setRole(resultSet.getString("role"));
+            return user;
+        } catch (SQLException ex) {
+            log.log(Level.WARNING, "Не удалось выполнить запрос", ex);
+            return new User();
+        }
+    }
+
+    public User selectFirstUser() {
+        String query = "select * from USER where ID > 0 LIMIT 1";
+        try (Connection conn = DriverManager.getConnection("jdbc:sqlite:" + dbPath);
+             Statement stat = conn.createStatement()) {
+            ResultSet resultSet = stat.executeQuery(query);
+            User user = new User();
+            user.setId(resultSet.getInt("id"));
+            user.setBirthday(resultSet.getDate("birthday"));
+            user.setName(resultSet.getString("name"));
+            user.setNumberPhone(resultSet.getString("number_phone"));
             user.setAbout(resultSet.getString("about"));
             user.setHobby(resultSet.getString("hobby"));
             user.setVk(resultSet.getString("vk"));
@@ -118,7 +142,7 @@ public class DbSqlite implements InitializingBean {
     }
 
     public List<Integer> getAllUserID () {
-        String query = "SELECT ID FROM USER";
+        String query = "SELECT ID FROM USER ORDER by ID";
         try (Connection conn = DriverManager.getConnection("jdbc:sqlite:" + dbPath)) {
             Statement stat = conn.createStatement();
             ResultSet resultSet = stat.executeQuery(query);
@@ -161,6 +185,39 @@ public class DbSqlite implements InitializingBean {
         try (Connection conn = DriverManager.getConnection("jdbc:sqlite:" + dbPath);
              Statement stat = conn.createStatement()) {
             return stat.executeUpdate(String.format("UPDATE USER set ABOUT = '%s' where NAME = '%s'", info, name));
+        } catch (SQLException ex) {
+            log.log(Level.WARNING, "Не удалось выполнить запрос isNameExistRequest", ex);
+            return null;
+        }
+    }
+
+    public List<String> selectCommentByName(String name) {
+        try (Connection conn = DriverManager.getConnection("jdbc:sqlite:" + dbPath);
+             Statement stat = conn.createStatement()) {
+            ResultSet resultSet = stat.executeQuery(String.format("select COMMENT, NAME_SENDER from COMMENT where NAME_RECEIVER = '%s'", name));
+            List<String> comments = new ArrayList<>();
+            while (resultSet.next()) {
+                comments.add(String.format("%s: %s", resultSet.getString("NAME_SENDER"), resultSet.getString("COMMENT")));
+            }
+            return comments;
+        } catch (SQLException ex) {
+            log.log(Level.WARNING, "Не удалось выполнить запрос isNameExistRequest", ex);
+            return null;
+        }
+    }
+
+    public Integer insertNewComment(String nameReceiver, String comment, String nameSender) {
+        StringBuilder query = new StringBuilder();
+        query.append("insert into COMMENT (name_receiver, comment, name_sender) ")
+                .append("values ('")
+                .append(nameReceiver).append("','")
+                .append(comment).append("','")
+                .append(nameSender)
+                .append("');");
+        log.log(Level.INFO, "Запрос: " + query);
+        try (Connection conn = DriverManager.getConnection("jdbc:sqlite:" + dbPath);
+             Statement stat = conn.createStatement()) {
+            return stat.executeUpdate(query.toString());
         } catch (SQLException ex) {
             log.log(Level.WARNING, "Не удалось выполнить запрос isNameExistRequest", ex);
             return null;

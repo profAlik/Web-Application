@@ -1,0 +1,140 @@
+body {
+    background: url("../images/bg2.jpg");
+    background-attachment: fixed;
+    background-size: cover;
+    font-family: Comic sans MS;
+}
+
+div.page-container {
+  min-width: 960px;
+  max-width: 75%;
+  margin: 0 auto;
+  padding: 0;
+}
+
+.user_data {
+    position: relative;
+    max-width: 400px;
+    padding: 60px 50px;
+    margin: 20px 200px;
+}
+
+.user_data:before {
+     content: '';
+     position: absolute;
+     width: 950px;
+     top: 0;
+     left: 0;
+     right: 0;
+     bottom: 0;
+     border-radius: 25px;
+     background: linear-gradient(to top, #ccb0, #afecdd);
+}
+
+.head {
+    position: relative;
+}
+
+.middle {
+    position: relative;
+    float: left;
+    margin-right: 100px;
+}
+
+.middle_about {
+    position: relative;
+    width: 900px;
+    height: 300px;
+}
+
+p {
+    position: relative;
+    font-size: 20px;
+    color: white;
+    text-shadow: 1px 1px 2px black;
+}
+
+h1 {
+    position: relative;
+    font-size: 35px;
+    color: white;
+    text-shadow: 2px 2px 3px black;
+}
+
+#user_name {
+    position: relative;
+    font-size: 37px;
+    color: white;
+    margin-left: 15px;
+    text-shadow: 1px 1px 2px black;
+}
+
+#user_id, #user_numberPhone, #user_birthday, #user_hobby, #input_user_id,
+ #user_marriage, #user_have_children, #user_gender {
+    position: relative;
+   font-size: 20px;
+   color: rgb(250, 255, 173);
+}
+
+
+#vk {
+    position: relative;
+	height: 25px;
+}
+
+input {
+    position: relative;
+}
+
+#user_about {
+    position: relative;
+    font-size: 20px;
+    color: rgb(250, 255, 173);
+    text-shadow: 1px 1px 2px black;
+    background-color: transparent;
+    resize: none;
+    height: 200px;
+    width: 445px;
+}
+
+button {
+    position: relative;
+    font-size: 20px;
+    border-color: #429c0a;
+    border-style: solid;
+    border-width: 2px;
+    color: #429c0a;
+    background: white;
+    border-radius: 5px;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+button:hover {
+    background-color: #429c0a;
+    color: white;
+}
+
+.comments {
+    position: relative;
+    margin-top: 20px;
+}
+
+#comments_field {
+    width: 800px;
+    height: 250px;
+    resize: none;
+    background: transparent;
+    font-size: 20px;
+    color: rgb(250, 255, 173);
+    text-shadow: 1px 1px 2px black;
+}
+
+#comment_input {
+    width: 800px;
+    height: 50px;
+    resize: none;
+    background: transparent;
+    font-size: 20px;
+    color: rgb(250, 255, 173);
+    text-shadow: 1px 1px 2px black;
+}

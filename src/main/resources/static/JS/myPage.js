@@ -31,17 +31,15 @@ function updateUserInfo() {
     var params = {"name": user_name, "info": user_info};
     xhr.send(JSON.stringify(params));
     xhr.onload = (e) => {
-            var user = JSON.parse(e.target.response);
-            if (xhr.status === 200) {
-                alert("Данные успешно изменены!");
-            } else if (xhr.status === 400) {
-                alert("Ошибка с заполнеными данными.");
-                document.getElementById("input_name").value = "";
-            } else if (xhr.status === 500) {
-                alert("Ошибка на сервере");
-            } else {
-                alert("Что-то пошло не так. Повторите попытку позже.");
-            }
-        };
-
+        var user = JSON.parse(e.target.response);
+        if (xhr.status === 200) {
+            alert("Данные успешно сохранены!");
+        } else if (xhr.status === 400) {
+            alert("Ошибка с заполнеными данными.");
+        } else if (xhr.status === 500) {
+            alert("Ошибка на сервере");
+        } else {
+            alert("Что-то пошло не так. Повторите попытку позже.");
+        }
+    };
 }

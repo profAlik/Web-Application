@@ -26,7 +26,6 @@ public class DBUserController {
     private final DbSqlite dbSqlite;
     private final PasswordEncoder passwordEncoder;
     private final ValidationService validationService;
-
     private Logger log = Logger.getLogger(getClass().getName());
 
     public DBUserController(DbSqlite dbSqlite, PasswordEncoder passwordEncoder, ValidationService validationService) {
@@ -70,7 +69,6 @@ public class DBUserController {
             produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<Integer>> getAllUserID () {
         List<Integer> allUserID = dbSqlite.getAllUserID();
-
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
         return new ResponseEntity<>(allUserID, headers, HttpStatus.OK);
@@ -96,8 +94,19 @@ public class DBUserController {
         String username = SecurityContextHolder.getContext().getAuthentication().getName();
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
-
         return new ResponseEntity<>(dbSqlite.selectUserByName(username), headers, HttpStatus.OK);
+    }
+
+    @ApiOperation(value = "Выбор первого User")
+    @RequestMapping(value = "/select/first/user", method = RequestMethod.POST,
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<User> selectFirstUser () {
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+        User user = dbSqlite.selectFirstUser();
+        if (user != null) {
+            return new ResponseEntity<>(user, headers, HttpStatus.OK);
+        } else return new ResponseEntity<>(new User(), headers, HttpStatus.BAD_REQUEST);
     }
 
     @ApiOperation(value = "Проверка существования имени в БД")
@@ -120,5 +129,26 @@ public class DBUserController {
         if (dbSqlite.updateUserInfo(userInfoRequest.getInfo(), userInfoRequest.getName()) != null) {
             return new ResponseEntity<>(true, headers, HttpStatus.OK);
         } else return new ResponseEntity<>(false, headers, HttpStatus.BAD_REQUEST);
+    }
+
+    @ApiOperation(value = "Добавить новый комментрарий")
+    @RequestMapping(value = "/insert/new/comment", method = RequestMethod.POST,
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Integer> insertNewComment (@RequestBody CommentRequest request) {
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+        String nameSender = SecurityContextHolder.getContext().getAuthentication().getName();
+        return new ResponseEntity<>(dbSqlite.insertNewComment(request.getNameReceiver(), request.getComment(), nameSender), headers, HttpStatus.OK);
+    }
+
+    @ApiOperation(value = "Выбрать комментарии пользователя")
+    @RequestMapping(value = "/select/comment/by/name", method = RequestMethod.POST,
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Object> selectCommentByName (@RequestBody CommentByName name) {
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+        Comments comments = new Comments();
+        comments.setComments(dbSqlite.selectCommentByName(name.getName()));
+        return new ResponseEntity<>(comments, headers, HttpStatus.OK);
     }
 }

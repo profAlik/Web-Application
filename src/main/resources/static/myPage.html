@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Страница пользователя</title>
-    <link rel="stylesheet" href="css/usersOverview.css"/>
-    <script src="js/user.js"></script>
+    <title>Моя страница</title>
+    <link rel="stylesheet" href="css/myPage.css"/>
+    <script src="js/myPage.js"></script>
 </head>
 <body>
 <div class="page-container">
@@ -17,7 +17,7 @@
             <p> ID пользователя:
                 <nobr id="user_id"></nobr>
             <p> Номер телефона:
-                <nobr id="user_numberPhone"></nobr>
+                <p id="user_numberPhone"></p>
             <p> Дата рождения:
                 <nobr id="user_birthday"></nobr>
             <p id="user_marriage"></p>
@@ -33,7 +33,8 @@
             <button type="button" onclick="updateUserInfo()">Сохранить</button>
         </div>
         <div class="bottom">
-            <br><button type="button" onclick="window.location='sign_in.html'">Выйти</button>
+            <button type="button" onclick="window.location='users.html'">Ко всем пользователям</button>
+            <br><br><button type="button" onclick="window.location='sign_in.html'">Выйти</button>
         </div>
     </div>
 </div>

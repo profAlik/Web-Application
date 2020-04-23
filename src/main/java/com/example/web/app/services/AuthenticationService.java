@@ -22,7 +22,6 @@ public class AuthenticationService implements UserDetailsService {
     public UserDetails loadUserByUsername (String username) throws UsernameNotFoundException {
         com.example.web.app.dao.model.User user = dbSqlite.selectUserByName(username.toUpperCase());
 
-
         UserDetails userDetails = User
                 .withUsername((user.getName().toUpperCase()))
                 .password(user.getPassword())
