@@ -47,6 +47,7 @@ function createUser() {
                 document.getElementById("input_about").value = "";
                 document.getElementById("input_hobby").value = "";
                 document.getElementById("input_user_password").value = "";
+                window.location='login';
             } else if (xhr.status === 400) {
                 alert("Неверные данные. (Имя пользователя должно быть уникальное)");
                 document.getElementById("input_name").value = "";
