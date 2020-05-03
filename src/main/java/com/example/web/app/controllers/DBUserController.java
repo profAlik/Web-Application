@@ -5,6 +5,8 @@ import com.example.web.app.dao.DbSqlite;
 import com.example.web.app.dao.model.User;
 import com.example.web.app.services.ValidationService;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -35,6 +37,8 @@ public class DBUserController {
     }
 
     @ApiOperation(value = "Выборка User по id")
+    @ApiResponses(value = {
+            @ApiResponse(code = 500, message = "Ошибка на сервере.")})
     @RequestMapping(value = "/select/user/by/id", method = RequestMethod.POST,
             produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<User> selectUserById(@RequestBody UserByIdRequest id) {
@@ -50,6 +54,8 @@ public class DBUserController {
     }
 
     @ApiOperation(value = "Создание нового User")
+    @ApiResponses(value = {
+            @ApiResponse(code = 500, message = "Ошибка на сервере.")})
     @RequestMapping(value = "/create/new/user", method = RequestMethod.POST,
             produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Object> createNewUser (@RequestBody User user) {
@@ -65,6 +71,8 @@ public class DBUserController {
     }
 
     @ApiOperation(value = "Получение всех id пользователей")
+    @ApiResponses(value = {
+            @ApiResponse(code = 500, message = "Ошибка на сервере.")})
     @RequestMapping(value = "/get/all/user/id", method = RequestMethod.POST,
             produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<Integer>> getAllUserID () {
@@ -75,6 +83,8 @@ public class DBUserController {
     }
 
     @ApiOperation(value = "Проверка на правельность имени пользователя и пароля")
+    @ApiResponses(value = {
+            @ApiResponse(code = 500, message = "Ошибка на сервере.")})
     @RequestMapping(value = "/is/user/with/password", method = RequestMethod.POST,
             produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<String> isUserWithPassword (@RequestBody UserByPasswordRequest user) {
@@ -88,6 +98,8 @@ public class DBUserController {
     }
 
     @ApiOperation(value = "Выбор User по имени пользователя")
+    @ApiResponses(value = {
+            @ApiResponse(code = 500, message = "Ошибка на сервере.")})
     @RequestMapping(value = "/select/user/by/name", method = RequestMethod.POST,
             produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<User> selectUserByName (@RequestBody UserByNameRequest user) {
@@ -98,6 +110,8 @@ public class DBUserController {
     }
 
     @ApiOperation(value = "Выбор первого User")
+    @ApiResponses(value = {
+            @ApiResponse(code = 500, message = "Ошибка на сервере.")})
     @RequestMapping(value = "/select/first/user", method = RequestMethod.POST,
             produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<User> selectFirstUser () {
@@ -110,6 +124,8 @@ public class DBUserController {
     }
 
     @ApiOperation(value = "Проверка существования имени в БД")
+    @ApiResponses(value = {
+            @ApiResponse(code = 500, message = "Ошибка на сервере.")})
     @RequestMapping(value = "/is/name/exist", method = RequestMethod.POST,
             produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Boolean> isNameExist (@RequestBody UserNameRequest name) {
@@ -121,6 +137,8 @@ public class DBUserController {
     }
 
     @ApiOperation(value = "Изменить информацию о пользователе")
+    @ApiResponses(value = {
+            @ApiResponse(code = 500, message = "Ошибка на сервере.")})
     @RequestMapping(value = "/update/user/info", method = RequestMethod.POST,
             produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Boolean> updateUserInfo (@RequestBody UserInfoRequest userInfoRequest) {
@@ -132,6 +150,8 @@ public class DBUserController {
     }
 
     @ApiOperation(value = "Добавить новый комментрарий")
+    @ApiResponses(value = {
+            @ApiResponse(code = 500, message = "Ошибка на сервере.")})
     @RequestMapping(value = "/insert/new/comment", method = RequestMethod.POST,
             produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Integer> insertNewComment (@RequestBody CommentRequest request) {
@@ -142,9 +162,11 @@ public class DBUserController {
     }
 
     @ApiOperation(value = "Выбрать комментарии пользователя")
+    @ApiResponses(value = {
+            @ApiResponse(code = 500, message = "Ошибка на сервере.")})
     @RequestMapping(value = "/select/comment/by/name", method = RequestMethod.POST,
             produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Object> selectCommentByName (@RequestBody CommentByName name) {
+    public ResponseEntity<Comments> selectCommentByName (@RequestBody CommentByName name) {
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
         Comments comments = new Comments();

@@ -186,7 +186,7 @@ public class DbSqlite implements InitializingBean {
              Statement stat = conn.createStatement()) {
             return stat.executeUpdate(String.format("UPDATE USER set ABOUT = '%s' where NAME = '%s'", info, name));
         } catch (SQLException ex) {
-            log.log(Level.WARNING, "Не удалось выполнить запрос isNameExistRequest", ex);
+            log.log(Level.WARNING, "Не удалось выполнить запрос", ex);
             return null;
         }
     }
@@ -201,7 +201,7 @@ public class DbSqlite implements InitializingBean {
             }
             return comments;
         } catch (SQLException ex) {
-            log.log(Level.WARNING, "Не удалось выполнить запрос isNameExistRequest", ex);
+            log.log(Level.WARNING, "Не удалось выполнить запрос", ex);
             return null;
         }
     }
@@ -219,7 +219,7 @@ public class DbSqlite implements InitializingBean {
              Statement stat = conn.createStatement()) {
             return stat.executeUpdate(query.toString());
         } catch (SQLException ex) {
-            log.log(Level.WARNING, "Не удалось выполнить запрос isNameExistRequest", ex);
+            log.log(Level.WARNING, "Не удалось выполнить запрос", ex);
             return null;
         }
     }
